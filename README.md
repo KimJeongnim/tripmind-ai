@@ -2,11 +2,7 @@
 
 Gemini AI를 활용하여 사용자의 여행 조건에 맞는 국내 여행지를 추천하는 AI 여행 플래너 서비스입니다.
 
-AI가 여행 날짜, 여행 스타일, 동반자를 분석하여 추천 여행지와 날씨, 관광 정보를 제공합니다.
-
-TripMind AI는 사용자가 입력한 **여행 날짜, 여행 스타일, 여행 동반자, 추가 요청**을 바탕으로 Gemini AI가 국내 여행지를 추천해주는 AI 여행 추천 서비스입니다.
-
-사용자의 여행 조건을 분석하여 추천 여행지와 여행 시기의 날씨, 추천 행사 및 관광 포인트를 제공합니다.
+여행 날짜, 여행 스타일, 동반자, 추가 요청을 분석하여 추천 여행지와 날씨, 관광 정보를 제공합니다.
 
 ---
 
@@ -135,7 +131,7 @@ tripmind-ai/
 }
 ```
 
-### 응답 데이터
+### 응답 데이터 예시
 
 ```json
 {
@@ -177,7 +173,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ### 1. 프로젝트 다운로드
 
 ```bash
-git clone <GitHub Repository URL>
+git clone https://github.com/KimJeongnim/tripmind-ai.git
 cd tripmind-ai
 ```
 
@@ -197,7 +193,11 @@ GEMINI_API_KEY=your_gemini_api_key
 
 ### 4. 웹 서비스 실행
 
-프로젝트의 `index.html`을 브라우저에서 실행하거나 개발 환경에서 웹페이지를 실행합니다.
+Vercel에 배포된 Production 환경에서 서비스를 실행할 수 있습니다.
+
+배포 주소:
+
+https://c-jade-nu.vercel.app
 
 ---
 
