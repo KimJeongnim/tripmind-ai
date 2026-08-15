@@ -57,6 +57,19 @@ Gemini AI는 다음과 같은 JSON 형태의 결과를 생성합니다.
 
 생성된 결과는 다시 웹페이지로 전달되어 사용자가 보기 쉬운 형태로 표시됩니다.
 
+## AI 오류 처리
+
+사용자 입력 오류와 API 오류 상황에 대응하도록 처리했습니다.
+
+- 필수 입력값 누락:
+  "여행 정보를 입력해주세요." 안내
+
+- AI API 오류:
+  "잠시 후 다시 시도해주세요." 안내
+
+- 응답 지연:
+  로딩 메시지를 표시
+
 ---
 
 ## 4. 서비스 동작 과정
@@ -226,6 +239,10 @@ https://c-jade-nu.vercel.app
 ### ③ Vercel Production 배포
 
 ![Vercel Production 배포](images/03_vercel-deployment.png)
+
+### ④ 모바일 화면
+
+![TripMind AI 모바일 화면](images/04_tripmind-mobile.png)
 
 ---
 
