@@ -116,7 +116,10 @@ tripmind-ai/
 ├── images/
 │   ├── 01_tripmind-main.png
 │   ├── 02_tripmind-result.png
-│   └── 03_vercel-deployment.png
+│   ├── 03_vercel-deployment.png
+│   └── 04_tripmind-mobile.png
+├── docs/
+│   └── TripMind_AI_프로젝트기획서.pdf
 ├── index.html
 ├── pyproject.toml
 ├── requirements.txt
@@ -124,7 +127,9 @@ tripmind-ai/
 ├── .env.example
 └── .gitignore
 ```
+## Project Document
 
+- [TripMind AI 프로젝트 기획서](docs/TripMind_AI_프로젝트기획서.pdf)
 ---
 
 ## 7. API 구성
