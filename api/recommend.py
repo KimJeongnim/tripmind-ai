@@ -98,24 +98,35 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(response_body)
 
         except ValueError as e:
-            self.send_json_error(400, str(e))
+            self.send_json_error(
+                400,
+                "INVALID_INPUT",
+                str(e)
+            )
 
         except Exception as e:
             print("API 오류:", e)
             self.send_json_error(
                 500,
+                "AI_API_ERROR",
                 "AI 추천 처리 중 오류가 발생했습니다."
             )
 
     def do_GET(self):
         self.send_json_error(
             405,
+            "METHOD_NOT_ALLOWED",
             "이 API는 POST 요청만 지원합니다."
         )
 
-    def send_json_error(self, status_code, message):
+    def send_json_error(self, status_code, code, message):
         response_body = json.dumps(
-            {"error": message},
+            {
+                "error": {
+                    "code": code,
+                    "message": message
+                }
+            },
             ensure_ascii=False
         ).encode("utf-8")
 

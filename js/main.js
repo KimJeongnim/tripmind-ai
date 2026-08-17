@@ -33,6 +33,10 @@ form.addEventListener("submit", async function (event) {
     `;
 
     try {
+        // 30초 timeout 설정
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
+
         const response = await fetch("/api/recommend", {
             method: "POST",
             headers: {
@@ -43,14 +47,18 @@ form.addEventListener("submit", async function (event) {
                 style: style,
                 companion: companion,
                 request: request
-            })
+            }),
+            signal: controller.signal
         });
+
+        clearTimeout(timeoutId);
 
         const data = await response.json();
 
+        // API 오류 처리
         if (!response.ok) {
             throw new Error(
-                data.error || "AI 추천을 가져오지 못했습니다."
+                data.error?.message || "AI 추천을 가져오지 못했습니다."
             );
         }
 
@@ -91,16 +99,21 @@ form.addEventListener("submit", async function (event) {
     } catch (error) {
         console.error(error);
 
+        // timeout과 일반 오류를 구분
+        const message =
+            error.name === "AbortError"
+                ? "AI 응답이 지연되고 있습니다.<br>잠시 후 다시 시도해주세요."
+                : "AI 추천을 가져오는 중 문제가 발생했습니다.<br>잠시 후 다시 시도해주세요.";
+
         result.innerHTML = `
             <div class="result-error">
                 <span>⚠️</span>
-                <p>
-                    AI 추천을 가져오는 중 문제가 발생했습니다.<br>
-                    잠시 후 다시 시도해주세요.
-                </p>
+                <p>${message}</p>
             </div>
         `;
+
     } finally {
+        // 성공/실패/timeout 모두 버튼 원상복구
         button.disabled = false;
         button.textContent = "✨ AI에게 여행 추천받기";
     }
